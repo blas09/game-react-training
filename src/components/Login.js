@@ -1,21 +1,26 @@
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {game as gameActions} from '../store/actions';
-import {useHistory} from 'react-router-dom';
+import {Redirect} from "react-router-dom";
 
 const Login = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
-
     const [playerName, setPlayerName] = useState('');
+    const [isButtonDisabled, setButtonDisabled] = useState(true);
+    const game = useSelector(state => state.game.game);
+
+    if (null !== game) {
+        return <Redirect to='/game' />
+    }
 
     const changeNameHandler = (event) => {
         setPlayerName(event.target.value);
+        setButtonDisabled(event.target.value.trim() === '');
     }
 
     const startGameHandler = () => {
-        dispatch(gameActions.setStartGame(playerName));
-        history.push('/game');
+        dispatch(gameActions.startGame(playerName));
+        setButtonDisabled(true);
     }
 
     return (
@@ -39,7 +44,7 @@ const Login = () => {
 
                     <div className="columns is-mobile">
                         <div className="column is-one-third is-offset-one-third">
-                            <button className="button is-primary is-fullwidth" onClick={startGameHandler} disabled={playerName.length <= 0}>LET'S PLAY</button>
+                            <button className="button is-primary is-fullwidth" onClick={startGameHandler} disabled={isButtonDisabled}>LET'S PLAY</button>
                         </div>
                     </div>
 

@@ -7,7 +7,7 @@ import {Redirect} from "react-router-dom";
 const Game = () => {
     const game = useSelector(state => state.game.game);
 
-    if (!game.started) {
+    if (null === game) {
         return <Redirect to='/' />
     }
 
