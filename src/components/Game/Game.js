@@ -16,7 +16,7 @@ const Game = () => {
             <div className="hero-body">
                 <div className="container">
                     <div className="columns">
-                        <GamePanel />
+                        <GamePanel game={game} />
                         <Score />
                     </div>
                 </div>

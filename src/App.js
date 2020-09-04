@@ -4,7 +4,6 @@ import 'bulma/css/bulma.css';
 import Login from "./components/Login";
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Game from "./components/Game/Game";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 function App() {
   return (
