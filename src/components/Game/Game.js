@@ -1,8 +1,16 @@
 import React from "react";
 import Score from "./Score/Score";
 import GamePanel from "./GamePanel/GamePanel";
+import {useSelector} from "react-redux";
+import {Redirect} from "react-router-dom";
 
-const Board = (props) => {
+const Game = () => {
+    const game = useSelector(state => state.game.game);
+
+    if (!game.started) {
+        return <Redirect to='/' />
+    }
+
     return (
         <section className="hero is-fullheight">
             <div className="hero-body">
@@ -17,4 +25,4 @@ const Board = (props) => {
     );
 }
 
-export default Board;
+export default Game;

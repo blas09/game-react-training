@@ -1,7 +1,7 @@
 import React from "react";
 
 const UserPanel = ({user}) => {
-    const hp = `HP: ${user.healthPoints}/${user.maxHealthPoints}`;
+    const hp = `HP: ${user.hp}/${user.maxHp}`;
 
     return (
         <div className="columns is-mobile">

@@ -1,21 +1,11 @@
 import React from "react";
 import CardPanel from "./CardPanel/CardPanel";
 import UserPanel from "./UserPanel/UserPanel";
+import {useSelector} from "react-redux";
 
 const GamePanel = () => {
-    const enemy = {
-        name: 'Enemy',
-        healthPoints: 32,
-        maxHealthPoints: 40,
-        shield: 0,
-    };
-
-    const player = {
-        name: 'Player',
-        healthPoints: 16,
-        maxHealthPoints: 40,
-        shield: 45,
-    };
+    const player = useSelector(state => state.game.player);
+    const enemy = useSelector(state => state.game.enemy);
 
     return (
         <div className="column is-three-quarters">
