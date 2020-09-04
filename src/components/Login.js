@@ -5,6 +5,7 @@ import {Redirect} from "react-router-dom";
 
 const Login = () => {
     const dispatch = useDispatch();
+
     const game = useSelector(state => state.game.game);
 
     const [playerName, setPlayerName] = useState('');

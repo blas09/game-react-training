@@ -2,6 +2,8 @@ import React from "react";
 import Loader from "../../../Loader";
 
 const UserPanel = ({user}) => {
+    console.log(user);
+
     const userData = null === user
         ? <Loader />
         :   <>
@@ -19,8 +21,8 @@ const UserPanel = ({user}) => {
     const userImage = null === user
         ? <Loader />
         :   <>
-                <figure className="image is-128x128">
-                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+                <figure className="image is-128x128" style={{overflow:'hidden'}}>
+                    <img src={null === user.image ? 'https://bulma.io/images/placeholders/128x128.png' : user.image} />
                 </figure>
             </>;
 
