@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bulma/css/bulma.css';
-import Board from "./components/Board";
+import Board from "./components/Board/Board";
 
 function App() {
   return (
