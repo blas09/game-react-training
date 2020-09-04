@@ -1,7 +1,11 @@
 import React from "react";
 import Move from "./Move";
+import {useSelector} from "react-redux";
 
 const Score = () => {
+    const game = useSelector(state => state.game.game);
+    const turnsPast = game.maxTurns - game.turnsLeft;
+
     return (
         <div className="column is-one-quarter">
             <article className="message" style={{
@@ -19,9 +23,9 @@ const Score = () => {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                 }}>
-                    <Move title="CURRENT" value={12} />
-                    <Move title="PAST" value={11} />
-                    <Move title="LEFT" value={8} />
+                    <Move title="CURRENT" value={game.currentTurn} />
+                    <Move title="PAST" value={turnsPast} />
+                    <Move title="LEFT" value={game.turnsLeft} />
                     <div className="content">
                         <button className="button is-primary is-fullwidth is-medium">END TURN</button>
                     </div>
