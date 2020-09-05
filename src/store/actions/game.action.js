@@ -54,8 +54,26 @@ const setFetchMonster = (monster) => {
     return { type: game.SET_FETCH_MONSTER, monster }
 }
 
+const fetchCards = (playerId) => {
+    return dispatch => {
+        const fetchPlayerURL = `${baseURL}players/${playerId}/cards`;
+
+        axios
+            .get(fetchPlayerURL)
+            .then(res => {
+                dispatch(setFetchCards(res.data));
+            })
+            .catch(error => console.log(error));
+    };
+}
+
+const setFetchCards = (cards) => {
+    return { type: game.SET_FETCH_CARDS, cards: cards }
+}
+
 export default {
     startGame,
     fetchPlayer,
     fetchMonster,
+    fetchCards,
 }
