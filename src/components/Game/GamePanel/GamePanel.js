@@ -10,11 +10,18 @@ const GamePanel = () => {
     const game = useSelector(state => state.game.game);
     const player = useSelector(state => state.game.player);
     const monster = useSelector(state => state.game.monster);
+    const fetchCards = useSelector(state => state.game.fetchCards);
 
     useEffect(() => {
         dispatch(gameActions.fetchPlayer(game.id));
         dispatch(gameActions.fetchMonster(game.id));
     }, [game]);
+
+    useEffect(() => {
+        if (fetchCards) {
+            dispatch(gameActions.fetchCards(player.id));
+        }
+    }, [fetchCards]);
 
     return (
         <div className="column is-three-quarters">
