@@ -9,6 +9,7 @@ const initialState = {
     monsterEffect: null,
     playingTurn: false,
     movesPast: 0,
+    isHorrorEffectModalActive: false,
 }
 
 export default (state = initialState, action) => {
@@ -30,9 +31,12 @@ export default (state = initialState, action) => {
                 monsterEffect: action.payload.monsterEffect,
                 playingTurn: false,
                 movesPast: action.payload.movePast ? state.movesPast + 1: state.movesPast,
+                selectedCard: null,
             };
         case game.SET_PLAYING_TURN:
             return {...state, playingTurn: action.playingTurn};
+        case game.SET_HORROR_EFFECT_MODAL_ACTIVE:
+            return {...state, isHorrorEffectModalActive: action.state};
         default:
             return {...state };
     }

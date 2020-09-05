@@ -102,6 +102,10 @@ const setPlayingTurn = (playingTurn) => {
     return { type: game.SET_PLAYING_TURN, playingTurn };
 }
 
+const setHorrorEffectModal = (state) => {
+    return { type: game.SET_HORROR_EFFECT_MODAL_ACTIVE, state };
+}
+
 export default {
     startGame,
     fetchPlayer,
@@ -110,4 +114,5 @@ export default {
     setSelectedCard,
     nextTurn,
     setPlayingTurn,
+    setHorrorEffectModal,
 }
