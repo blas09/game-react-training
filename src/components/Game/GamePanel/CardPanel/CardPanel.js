@@ -14,7 +14,7 @@ const CardPanel = () => {
     };
 
     return (
-        <div className="columns is-mobile">
+        <div className="columns is-mobile is-multiline">
             {player && player.cards && player.cards.map((card, index) => {
                 return (
                     <Card
