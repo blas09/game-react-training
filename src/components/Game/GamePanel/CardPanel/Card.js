@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "../../../Loader";
 
-const Card = ({card, selectedCardId, select}) => {
+const Card = ({card, selectedCard, select}) => {
     const getCardColor = () => {
         switch (card.effect) {
             case 'HEAL':
@@ -16,7 +16,7 @@ const Card = ({card, selectedCardId, select}) => {
     }
 
     let style = {cursor: 'pointer'};
-    if (card && card.id === selectedCardId) {
+    if (card && card.id === selectedCard) {
         style = {...style, backgroundColor: getCardColor()};
     }
 

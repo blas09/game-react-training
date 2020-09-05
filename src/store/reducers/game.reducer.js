@@ -5,6 +5,7 @@ const initialState = {
     player: null,
     monster: null,
     fetchCards: false,
+    selectedCard: null,
 }
 
 export default (state = initialState, action) => {
@@ -17,6 +18,8 @@ export default (state = initialState, action) => {
             return {...state, monster: {...action.monster}};
         case game.SET_FETCH_CARDS:
             return {...state, player: {...state.player, cards: action.cards}, fetchCards: false};
+        case game.SET_SELECTED_CARD:
+            return {...state, selectedCard: state.selectedCard !== action.selectedCard ? action.selectedCard : null};
         default:
             return {...state };
     }

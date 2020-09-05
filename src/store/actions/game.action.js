@@ -16,10 +16,6 @@ const startGame = (playerName) => {
     };
 }
 
-const setStartGame = (createdGame) => {
-    return { type: game.SET_START_GAME, game: createdGame }
-}
-
 const fetchPlayer = (gameId) => {
     return dispatch => {
         const fetchPlayerURL = `${baseURL}games/${gameId}/player`;
@@ -31,10 +27,6 @@ const fetchPlayer = (gameId) => {
             })
             .catch(error => console.log(error));
     };
-}
-
-const setFetchPlayer = (player) => {
-    return { type: game.SET_FETCH_PLAYER, player }
 }
 
 const fetchMonster = (gameId) => {
@@ -50,10 +42,6 @@ const fetchMonster = (gameId) => {
     };
 }
 
-const setFetchMonster = (monster) => {
-    return { type: game.SET_FETCH_MONSTER, monster }
-}
-
 const fetchCards = (playerId) => {
     return dispatch => {
         const fetchPlayerURL = `${baseURL}players/${playerId}/cards`;
@@ -67,8 +55,24 @@ const fetchCards = (playerId) => {
     };
 }
 
+const setFetchMonster = (monster) => {
+    return { type: game.SET_FETCH_MONSTER, monster };
+}
+
+const setFetchPlayer = (player) => {
+    return { type: game.SET_FETCH_PLAYER, player };
+}
+
+const setStartGame = (createdGame) => {
+    return { type: game.SET_START_GAME, game: createdGame };
+}
+
 const setFetchCards = (cards) => {
-    return { type: game.SET_FETCH_CARDS, cards: cards }
+    return { type: game.SET_FETCH_CARDS, cards: cards };
+}
+
+const setSelectedCard = (selectedCard) => {
+    return { type: game.SET_SELECTED_CARD, selectedCard };
 }
 
 export default {
@@ -76,4 +80,5 @@ export default {
     fetchPlayer,
     fetchMonster,
     fetchCards,
+    setSelectedCard,
 }

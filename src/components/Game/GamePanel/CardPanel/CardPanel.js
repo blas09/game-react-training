@@ -1,14 +1,16 @@
 import React, {useState} from "react";
 import Card from "./Card";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {game as gameActions} from '../../../../store/actions';
 
 const CardPanel = () => {
+    const dispatch = useDispatch();
+
     const player = useSelector(state => state.game.player);
+    const selectedCard = useSelector(state => state.game.selectedCard);
 
-    const [selectedCardId, setSelectedCardId] = useState(null);
-
-    const selectCardHandler = (cardId) => {
-        setSelectedCardId(cardId !== selectedCardId ? cardId : null);
+    const selectCardHandler = (selectedCard) => {
+        dispatch(gameActions.setSelectedCard(selectedCard));
     };
 
     return (
@@ -18,8 +20,8 @@ const CardPanel = () => {
                     <Card
                         card={card}
                         key={card ? card.id : index}
-                        selectedCardId={selectedCardId}
-                        select={(cardId) => selectCardHandler(cardId)}
+                        selectedCard={selectedCard}
+                        select={(selectedCard) => selectCardHandler(selectedCard)}
                     />
                 );
             })}
