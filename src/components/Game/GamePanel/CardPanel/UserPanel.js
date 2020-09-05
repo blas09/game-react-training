@@ -6,14 +6,14 @@ const UserPanel = ({user}) => {
         ? <Loader />
         :   <>
                 <p className="is-size-3 has-text-weight-semibold">{user.name}</p>
-                <p className="is-size-5">{`HP: ${user.hp}/${user.maxHp}`}</p>
+                <p className="is-size-4">{`HP: ${user.hp}/${user.maxHp}`}</p>
             </>;
 
     const userShield = !user
         ? <Loader />
         :   <>
                 <p className="is-size-3 has-text-weight-semibold">Shield</p>
-                <p className="is-size-5">{user.shield}</p>
+                <p className="is-size-4">{user.shield}</p>
             </>;
 
     const userImage = !user || !user.image

@@ -29,15 +29,13 @@ const Card = ({card, selectedCardId, select}) => {
             {
                 null === card
                     ?   <Loader />
-                    :   <div className="card" style={style} onClick={clickHandler}>
-                            <div className="card-image">
-                                <div className="content is-size-1">
-                                    <strong>{card.value}</strong>
+                    :   <div className="box" style={style} onClick={clickHandler}>
+                            <article className="media">
+                                <div className="media-content">
+                                    <p className="is-size-3 has-text-weight-semibold">{card.effect}</p>
+                                    <p className="is-size-4">{card.value}</p>
                                 </div>
-                            </div>
-                            <div className="card-content">
-                                <div className="content is-size-3">{card.effect}</div>
-                            </div>
+                            </article>
                         </div>
             }
         </div>

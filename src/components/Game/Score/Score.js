@@ -27,7 +27,7 @@ const Score = () => {
                     <Move title="PAST" value={turnsPast} />
                     <Move title="LEFT" value={game.turnsLeft} />
                     <div className="content">
-                        <button className="button is-primary is-fullwidth is-medium">END TURN</button>
+                        <button className="button is-primary is-fullwidth is-large">END TURN</button>
                     </div>
                 </div>
             </article>

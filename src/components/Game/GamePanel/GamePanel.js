@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import CardPanel from "./CardPanel/CardPanel";
-import UserPanel from "./UserPanel/UserPanel";
+import UserPanel from "./CardPanel/UserPanel";
 import {useDispatch, useSelector} from "react-redux";
 import {game as gameActions} from '../../../store/actions';
 
