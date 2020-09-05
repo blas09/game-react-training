@@ -6,6 +6,9 @@ const initialState = {
     monster: null,
     fetchCards: false,
     selectedCard: null,
+    monsterEffect: null,
+    playingTurn: false,
+    movesPast: 0,
 }
 
 export default (state = initialState, action) => {
@@ -20,6 +23,16 @@ export default (state = initialState, action) => {
             return {...state, player: {...state.player, cards: action.cards}, fetchCards: false};
         case game.SET_SELECTED_CARD:
             return {...state, selectedCard: state.selectedCard !== action.selectedCard ? action.selectedCard : null};
+        case game.SET_NEXT_TURN:
+            return {
+                ...state,
+                game: {...state.game, ...action.payload.game},
+                monsterEffect: action.payload.monsterEffect,
+                playingTurn: false,
+                movesPast: action.payload.movePast ? state.movesPast + 1: state.movesPast,
+            };
+        case game.SET_PLAYING_TURN:
+            return {...state, playingTurn: action.playingTurn};
         default:
             return {...state };
     }

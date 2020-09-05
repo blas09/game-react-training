@@ -1,10 +1,20 @@
 import React from "react";
 import Move from "./Move";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {game as gameActions} from '../../../store/actions';
 
 const Score = () => {
+    const dispatch = useDispatch();
+
     const game = useSelector(state => state.game.game);
-    const turnsPast = game.maxTurns - game.turnsLeft;
+    const selectedCard = useSelector(state => state.game.selectedCard);
+    const playingTurn = useSelector(state => state.game.playingTurn);
+    const movesPast = useSelector(state => state.game.movesPast);
+
+    const buttonClickHandler = () => {
+        dispatch(gameActions.setPlayingTurn(true));
+        dispatch(gameActions.nextTurn(game.id, selectedCard));
+    }
 
     return (
         <div className="column is-one-quarter">
@@ -24,10 +34,14 @@ const Score = () => {
                     justifyContent: 'space-between',
                 }}>
                     <Move title="CURRENT" value={game.currentTurn} />
-                    <Move title="PAST" value={turnsPast} />
+                    <Move title="PAST" value={movesPast} />
                     <Move title="LEFT" value={game.turnsLeft} />
                     <div className="content">
-                        <button className="button is-primary is-fullwidth is-large">END TURN</button>
+                        <button
+                            className="button is-primary is-fullwidth is-large"
+                            onClick={buttonClickHandler}
+                            disabled={playingTurn}
+                        >END TURN</button>
                     </div>
                 </div>
             </article>

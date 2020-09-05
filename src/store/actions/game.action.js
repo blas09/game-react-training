@@ -55,6 +55,25 @@ const fetchCards = (playerId) => {
     };
 }
 
+const nextTurn = (gameId, selectedCard) => {
+    return dispatch => {
+        const nextTurnURL = `${baseURL}games/${gameId}/next-turn`;
+
+        let params = {};
+        if (selectedCard) {
+            params = {card: selectedCard};
+        }
+
+        axios
+            .post(nextTurnURL, params)
+            .then(res => {
+                res.data.movePast = !selectedCard;
+                dispatch(setNextTurn(res.data));
+            })
+            .catch(error => console.log(error));
+    };
+}
+
 const setFetchMonster = (monster) => {
     return { type: game.SET_FETCH_MONSTER, monster };
 }
@@ -75,10 +94,20 @@ const setSelectedCard = (selectedCard) => {
     return { type: game.SET_SELECTED_CARD, selectedCard };
 }
 
+const setNextTurn = (payload) => {
+    return { type: game.SET_NEXT_TURN, payload };
+}
+
+const setPlayingTurn = (playingTurn) => {
+    return { type: game.SET_PLAYING_TURN, playingTurn };
+}
+
 export default {
     startGame,
     fetchPlayer,
     fetchMonster,
     fetchCards,
     setSelectedCard,
+    nextTurn,
+    setPlayingTurn,
 }
