@@ -5,15 +5,15 @@ const UserPanel = ({user}) => {
     const userData = null === user
         ? <Loader />
         :   <>
-                <p className="title">{user.name}</p>
-                <p className="subtitle">{`HP: ${user.hp}/${user.maxHp}`}</p>
+                <p className="is-size-3 has-text-weight-semibold">{user.name}</p>
+                <p className="is-size-5">{`HP: ${user.hp}/${user.maxHp}`}</p>
             </>;
 
     const userShield = null === user
         ? <Loader />
         :   <>
-                <p className="title">Shield</p>
-                <p className="subtitle">{user.shield}</p>
+                <p className="is-size-3 has-text-weight-semibold">Shield</p>
+                <p className="is-size-5">{user.shield}</p>
             </>;
 
     const userImage = null === user || null === user.image
@@ -35,7 +35,11 @@ const UserPanel = ({user}) => {
                 </div>
             </div>
             <div className="column is-5">
-                <div className="box" style={{height: '100%'}}>{userShield}</div>
+                <div className="box" style={{height: '100%'}}>
+                    <article className="media">
+                        <div className="media-content">{userShield}</div>
+                    </article>
+                </div>
             </div>
         </div>
     );
