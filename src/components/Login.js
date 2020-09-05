@@ -11,7 +11,7 @@ const Login = () => {
     const [playerName, setPlayerName] = useState('');
     const [isButtonDisabled, setButtonDisabled] = useState(true);
 
-    if (null !== game) {
+    if (game) {
         return <Redirect to='/game' />
     }
 

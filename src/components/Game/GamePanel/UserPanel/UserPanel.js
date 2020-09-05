@@ -2,21 +2,21 @@ import React from "react";
 import Loader from "../../../Loader";
 
 const UserPanel = ({user}) => {
-    const userData = null === user
+    const userData = !user
         ? <Loader />
         :   <>
                 <p className="is-size-3 has-text-weight-semibold">{user.name}</p>
                 <p className="is-size-5">{`HP: ${user.hp}/${user.maxHp}`}</p>
             </>;
 
-    const userShield = null === user
+    const userShield = !user
         ? <Loader />
         :   <>
                 <p className="is-size-3 has-text-weight-semibold">Shield</p>
                 <p className="is-size-5">{user.shield}</p>
             </>;
 
-    const userImage = null === user || null === user.image
+    const userImage = !user || !user.image
         ? 'https://bulma.io/images/placeholders/128x128.png'
         : user.image;
 

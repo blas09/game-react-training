@@ -1,18 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
 import Card from "./Card";
 import {useSelector} from "react-redux";
 
 const CardPanel = () => {
     const player = useSelector(state => state.game.player);
 
-    let cards = [null, null, null];
-    if (null !== player && 'cards' in player) {
-        cards = player.cards;
-    }
+    const [selectedCardId, setSelectedCardId] = useState(null);
+
+    const selectCardHandler = (cardId) => {
+        setSelectedCardId(cardId !== selectedCardId ? cardId : null);
+    };
 
     return (
         <div className="columns is-mobile">
-            {cards.map((card, index) => <Card card={card} key={null !== card ? card.id : index} />)}
+            {player && player.cards && player.cards.map((card, index) => {
+                return (
+                    <Card
+                        card={card}
+                        key={card ? card.id : index}
+                        selectedCardId={selectedCardId}
+                        select={(cardId) => selectCardHandler(cardId)}
+                    />
+                );
+            })}
         </div>
     );
 }
