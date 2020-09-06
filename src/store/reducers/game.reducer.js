@@ -1,6 +1,7 @@
 import { game } from '../constants'
 
 const initialState = {
+    playerName: '',
     game: null,
     player: null,
     monster: null,
@@ -37,6 +38,10 @@ export default (state = initialState, action) => {
             return {...state, playingTurn: action.playingTurn};
         case game.SET_HORROR_EFFECT_MODAL_ACTIVE:
             return {...state, isHorrorEffectModalActive: action.state};
+        case game.SET_NEW_GAME:
+            return {...initialState, playerName: state.playerName};
+        case game.SET_PLAYER_NAME:
+            return {...state, playerName: action.playerName};
         default:
             return {...state };
     }

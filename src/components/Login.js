@@ -7,16 +7,16 @@ const Login = () => {
     const dispatch = useDispatch();
 
     const game = useSelector(state => state.game.game);
+    const playerName = useSelector(state => state.game.playerName);
 
-    const [playerName, setPlayerName] = useState('');
-    const [isButtonDisabled, setButtonDisabled] = useState(true);
+    const [isButtonDisabled, setButtonDisabled] = useState(playerName === '');
 
     if (game) {
         return <Redirect to='/game' />
     }
 
     const changeNameHandler = (event) => {
-        setPlayerName(event.target.value);
+        dispatch(gameActions.setPlayerName(event.target.value));
         setButtonDisabled(event.target.value.trim() === '');
     }
 
@@ -38,7 +38,7 @@ const Login = () => {
                         <div className="column is-one-third is-offset-one-third">
                             <div className="field">
                                 <div className="control">
-                                    <input className="input" type="text" placeholder="NAME" onChange={changeNameHandler} />
+                                    <input className="input" type="text" placeholder="NAME" onChange={changeNameHandler} value={playerName} />
                                 </div>
                             </div>
                         </div>

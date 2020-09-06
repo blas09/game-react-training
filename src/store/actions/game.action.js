@@ -106,6 +106,14 @@ const setHorrorEffectModal = (state) => {
     return { type: game.SET_HORROR_EFFECT_MODAL_ACTIVE, state };
 }
 
+const setNewGame = () => {
+    return { type: game.SET_NEW_GAME };
+}
+
+const setPlayerName = (playerName) => {
+    return { type: game.SET_PLAYER_NAME, playerName };
+}
+
 export default {
     startGame,
     fetchPlayer,
@@ -115,4 +123,6 @@ export default {
     nextTurn,
     setPlayingTurn,
     setHorrorEffectModal,
+    setNewGame,
+    setPlayerName,
 }

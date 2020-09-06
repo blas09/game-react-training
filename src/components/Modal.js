@@ -18,11 +18,15 @@ const Modal = (props) => {
                     {props.children}
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button" onClick={props.closeModal}>Close</button>
+                    <button className="button" onClick={props.closeModal}>{props.closeText}</button>
                 </footer>
             </div>
         </div>
     );
+}
+
+Modal.defaultProps = {
+    closeText: "Close",
 }
 
 export default Modal;
