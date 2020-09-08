@@ -5,6 +5,7 @@ import {game as gameActions} from '../../../../store/actions';
 import Modal from "../../../Modal";
 import {game as gameConstants} from '../../../../store/constants';
 import {Redirect} from "react-router-dom";
+import CardLoader from "./CardLoader";
 
 const CardPanel = () => {
     const dispatch = useDispatch();
@@ -15,12 +16,14 @@ const CardPanel = () => {
     const selectedCard = useSelector(state => state.game.selectedCard);
     const isHorrorEffectModalActive = useSelector(state => state.game.isHorrorEffectModalActive);
     const monsterEffect = useSelector(state => state.game.monsterEffect);
+    const numberOfCards = useSelector(state => state.game.numberOfCards);
+
+    console.log(player && player.cardas ? player.cards : 'hola');
 
     const [isWinModalActive, setWinModalActive] = useState(false);
     const [isLoseModalActive, setLoseModalActive] = useState(false);
 
     useEffect(() => {
-        console.log('hola');
         setWinModalActive(game.turnsLeft > 0 && (monster && monster.hp === 0));
         setLoseModalActive(game.turnsLeft === 0 || (player && player.hp === 0));
     }, [game, monster, player]);
@@ -53,6 +56,11 @@ const CardPanel = () => {
                             selectedCard={selectedCard}
                             select={(selectedCard) => selectCardHandler(selectedCard)}
                         />
+                    );
+                })}
+                {(!player || !player.cards) && Array(numberOfCards).fill().map((card, index) => {
+                    return (
+                        <CardLoader />
                     );
                 })}
             </div>
